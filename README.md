@@ -4,7 +4,7 @@
 2. Edit Execution map of python and c to:
 
 ```shell
-    "python": "cd $dir && python tests/test.default.pyc",
+    "python": "cd $dir/tests && python3 -B test.default.pyc",
     "c": "cd $dir && ./tests/test.default",
 ```
 
