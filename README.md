@@ -7,5 +7,5 @@
     "python": "cd $dir && python tests/test.default.pyc",
     "c": "cd $dir && ./tests/test.default",
 ```
-clone github repo
-# TECHAZTRA
+
+3. clone github repo
