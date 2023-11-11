@@ -1,9 +1,14 @@
 {
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
-    },
-    "python.formatting.provider": "none",
-    "python.analysis.extraPaths": [
-        "./Server/static/lib"
-    ]
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.formatting.provider": "none",
+  "python.analysis.extraPaths": ["./Server/static/lib"],
+  // your other settings ...
+  "workbench.editorAssociations": [
+    {
+      "viewType": "vscode.markdown.preview.editor",
+      "filenamePattern": "*.md"
+    }
+  ]
 }
