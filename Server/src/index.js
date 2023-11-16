@@ -11,7 +11,7 @@ const port = 5000 || process.env.PORT;
 
 app.post("/submit", (req, res) => {
   console.log(req.body);
-  const { deviceId, problemId, time, status } = req.body;
+  const { userId, problemId, time, status } = req.body;
 
   res.send("Success");
 });
