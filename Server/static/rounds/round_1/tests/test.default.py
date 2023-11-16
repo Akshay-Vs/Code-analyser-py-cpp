@@ -14,17 +14,18 @@ test_set = [
 sys.path.append("..")
 from problem import add_two_numbers
 
-url_endpoint = "http://localhost:5000/submit"
-device_id = "test_device_id"
-problem_id = 0
-
 
 config: Config = Config()
+config_data = config.read_config()
+user_id = config_data["user_id"]
+url_endpoint = config_data["url_endpoint"]
+problem_id = 0
+
 test_suite = TestSuite(
     add_two_numbers,
     test_set,
     url_endpoint,
-    device_id,
+    user_id,
     problem_id,
 )
 
