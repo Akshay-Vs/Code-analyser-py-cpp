@@ -4,8 +4,8 @@ import time
 import zipfile
 import io
 import logging
+import subprocess
 
-from os import system
 from platform import platform
 
 
@@ -44,9 +44,9 @@ class TestSuite:
     @staticmethod
     def clear():
         if platform().startswith("Windows"):
-            system("cls")
+            os.system("cls")
         else:
-            system("clear")
+            os.system("clear")
 
     @staticmethod
     def congratulate(self):
@@ -103,7 +103,6 @@ class TestSuite:
             )
         next_problem = self.problem_id + 1
         response = requests.get(self.url_endpoint + f"/problem/{next_problem}")
-        logging.info(f"Status code, GET zip file: {response.status_code}")
 
         if response.status_code == 200:
             logging.info("Proceeding to create next problem")
@@ -113,7 +112,11 @@ class TestSuite:
             z.extractall(path)
             logging.info("Successfully unzipped")
             logging.info(f"Opening next problem in VSCode")
-            os.system(f"cd {path} && code round_{next_problem}")
+            subprocess.run(["code", f"{path}/round_{next_problem}"])
+        else:
+            logging.error(
+                f"Failed to get next problem, Status Code: {response.status_code}"
+            )
 
     def unpack(self, test_case: dict):
         case_x = test_case["args"][0]

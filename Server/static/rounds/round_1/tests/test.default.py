@@ -40,12 +40,13 @@ elif problem_language == "c":
     logging.info("Selected Language: C")
     subprocess.run(["gcc", "-shared", "-o", "problem.dll", problem_path])
     logging.info("Successfully compiled problem")
+
     if platform().startswith("Windows"):
         logging.info("Platform: Windows")
         lib = cdll.LoadLibrary(".\problem.dll")
         logging.info("Successfully loaded problem")
     else:
-        logging.info("Platform: Linux")
+        logging.info("Platform: UNIX")
         lib = cdll.LoadLibrary("./problem.dll")
         logging.info("Successfully loaded problem")
 
