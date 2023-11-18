@@ -1,2 +1,2 @@
-def add_two_numbers(a:int, b:int)->int:
-    return 3
+def problem(a: int, b: int) -> int:
+    return a + b

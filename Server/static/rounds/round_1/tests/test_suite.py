@@ -3,6 +3,7 @@ import os
 import time
 import zipfile
 import io
+import logging
 
 from os import system
 from platform import platform
@@ -75,12 +76,12 @@ class TestSuite:
             "time": time.time(),
             "status": "pass",
         }
-        # print(payload)
-        # print(self.url_endpoint)
+
         url_endpoint = self.url_endpoint + "/submit"
         res = requests.post(url_endpoint, json=payload)
-        # print(res.text)
-        # print(res.status_code)
+        logging.info(f"Submitting to {url_endpoint}")
+        logging.info(f"Payload: {payload}")
+        logging.info(f"Response, POST Result: {res.status_code}")
 
     @staticmethod
     def is_last_problem(self):
@@ -102,20 +103,25 @@ class TestSuite:
             )
         next_problem = self.problem_id + 1
         response = requests.get(self.url_endpoint + f"/problem/{next_problem}")
-        print(response.status_code)
+        logging.info(f"Status code, GET zip file: {response.status_code}")
 
         if response.status_code == 200:
-            print("Proceeding to create next problem")
+            logging.info("Proceeding to create next problem")
             path = os.path.join(os.path.expanduser("~"), "BugBusters")
             z = zipfile.ZipFile(io.BytesIO(response.content))
+            logging.info(f"Unzipping to {path}")
             z.extractall(path)
+            logging.info("Successfully unzipped")
+            logging.info(f"Opening next problem in VSCode")
             os.system(f"cd {path} && code round_{next_problem}")
 
     def unpack(self, test_case: dict):
         case_x = test_case["args"][0]
         case_y = test_case["args"][1]
         expected = test_case["expected"]
-
+        logging.info(
+            f"Unpacking: case_x: {case_x}, case_y: {case_y}, expected: {expected}"
+        )
         return case_x, case_y, expected
 
     def run(self):
@@ -125,6 +131,7 @@ class TestSuite:
                 output = self.test_function(case_x, case_y)
 
                 if output == expected:
+                    logging.info(f"Test passed: got {output}")
                     print(
                         self.colored(
                             0,
@@ -135,6 +142,7 @@ class TestSuite:
                     )
 
                 else:
+                    logging.error(f"Test failed: got {output}, expected {expected}")
                     return print(
                         self.colored(
                             255,
@@ -148,6 +156,7 @@ class TestSuite:
             self.next_problem(self)
 
         except Exception as e:
+            logging.error(f"Test Suite Encountered an Error: {e}")
             print(
                 self.colored(
                     255,
