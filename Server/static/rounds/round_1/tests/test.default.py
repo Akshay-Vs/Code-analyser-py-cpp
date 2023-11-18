@@ -10,10 +10,11 @@ test_set = [
     {"args": [3, 4], "expected": 7},
     {"args": [5, 6], "expected": 11},
 ]
-# Test Suite Usage
-sys.path.append("..")
-from problem import add_two_numbers
 
+def add_two_numbers(a:int, b:int)->int:
+    return a+b
+
+test_function = add_two_numbers
 
 config: Config = Config()
 config_data = config.read_config()
@@ -22,7 +23,7 @@ url_endpoint = config_data["url_endpoint"]
 problem_id = 0
 
 test_suite = TestSuite(
-    add_two_numbers,
+    test_function,
     test_set,
     url_endpoint,
     user_id,

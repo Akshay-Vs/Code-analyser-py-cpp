@@ -25,6 +25,7 @@ app.get("/problem/:id", (req, res) => {
       console.log(`File doesn't exist: ${err}`);
       res.status(404).send('File not found');
     } else {
+      console.log(`File exists: ${filePath}`);
       res.setHeader('Content-Type', 'application/zip');
       const fileStream = fs.createReadStream(filePath);
       fileStream.pipe(res);
