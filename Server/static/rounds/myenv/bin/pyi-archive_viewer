@@ -1,4 +1,4 @@
-#!/home/avs/Projects/TECHAZTRA/Server/static/rounds/round_dev/tests/myenv/bin/python
+#!/home/avs/Projects/TECHAZTRA/Server/static/rounds/myenv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

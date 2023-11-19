@@ -9,9 +9,10 @@ class Config:
     def create_config(self):
         if not os.path.exists(self.config_file_path):
             with open(self.config_file_path, "w") as f:
-                json.dump(self.data, f)
+                return json.dump(self.data, f)
+                
         else:
-            print("Config file already exists")
+            return print("Config file already exists")
 
     def read_config(self):
         with open(self.config_file_path) as f:
@@ -20,7 +21,7 @@ class Config:
     
     def update_config(self, data: dict):
         with open(self.config_file_path, "w") as f:
-            json.dump(data, f)
+            return json.dump(data, f)
         
     def delete_config(self):
         if os.path.exists(self.config_file_path):
