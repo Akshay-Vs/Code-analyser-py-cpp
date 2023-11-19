@@ -71,7 +71,7 @@ class TestSuite:
     @staticmethod
     def submit(self):
         payload = {
-            "userId": self.user_id,
+            "username": self.user_id,
             "problemId": self.problem_id,
             "time": time.time(),
             "status": "pass",
