@@ -34,7 +34,7 @@ class Config:
 
 data: dict = {
     "url_endpoint": "http://localhost:5000",
-    "user_id": "01",
+    "user_id": "02",
 }
 config:Config = Config(data)
 config.create_config()

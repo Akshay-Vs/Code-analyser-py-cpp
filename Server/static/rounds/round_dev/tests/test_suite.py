@@ -106,7 +106,9 @@ class TestSuite:
 
         if response.status_code == 200:
             logging.info("Proceeding to create next problem")
-            path = os.path.join(os.path.expanduser("~"), "BugBusters")
+            timestamp = str(time.time())
+            path = os.path.join(os.path.expanduser("~"), "BugBusters", timestamp)
+            os.makedirs(path, exist_ok=True)
             z = zipfile.ZipFile(io.BytesIO(response.content))
             logging.info(f"Unzipping to {path}")
             z.extractall(path)
@@ -128,7 +130,7 @@ class TestSuite:
         return case_x, case_y, expected
 
     def run(self):
-        try:
+        # try:
             for test_case in self.test_cases:
                 case_x, case_y, expected = self.unpack(test_case)
                 output = self.test_function(case_x, case_y)
@@ -158,21 +160,21 @@ class TestSuite:
             self.submit(self)
             self.next_problem(self)
 
-        except Exception as e:
-            logging.error(f"Test Suite Encountered an Error: {e}")
-            print(
-                self.colored(
-                    255,
-                    0,
-                    0,
-                    f"{self.warning_emoji} Test Suite Encountered an Error: {e}",
-                )
-            )
-            return print(
-                self.colored(
-                    250,
-                    250,
-                    0,
-                    f"\n___________________________________________________________\n\nIt's possible that the issue lies with the test suite.\n**Please reach out to the coordinators for assistance**.\nFeel free to try the test again!\n___________________________________________________________",
-                )
-            )
+        # except Exception as e:
+        #     logging.error(f"Test Suite Encountered an Error: {e}")
+        #     print(
+        #         self.colored(
+        #             255,
+        #             0,
+        #             0,
+        #             f"{self.warning_emoji} Test Suite Encountered an Error: {e}",
+        #         )
+        #     )
+        #     return print(
+        #         self.colored(
+        #             250,
+        #             250,
+        #             0,
+        #             f"\n___________________________________________________________\n\nIt's possible that the issue lies with the test suite.\n**Please reach out to the coordinators for assistance**.\nFeel free to try the test again!\n___________________________________________________________",
+        #         )
+        #     )

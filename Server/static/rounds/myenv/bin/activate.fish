@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/avs/Projects/TECHAZTRA/Server/static/rounds/round_dev/tests/myenv"
+set -gx VIRTUAL_ENV "/home/avs/Projects/TECHAZTRA/Server/static/rounds/myenv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
