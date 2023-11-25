@@ -1,3 +1,5 @@
+const { insertData, endPool } = require("./database");
+
 const generateRandomHex = (length) => {
   let result = "";
   for (let i = 0; i < length; i++) {

@@ -13,6 +13,15 @@ const port = 5000 || process.env.PORT;
 app.use("/problem", problemRouter);
 app.use("/submit", resultRouter);
 
+app.get("/", (req, res) => {
+  console.log("Connnection established");
+  res.send("Connected to the server");
+});
+
+app.get("/setup", (req, res) => {
+  res.sendFile(__dirname + "/setup.py");
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

@@ -6,7 +6,7 @@ const pool = mysql
     host: "127.0.0.1",
     user: "root",
     database: "bugbusters",
-    password: "74670",
+    password: "Fedora@74670",
   })
   .promise();
 

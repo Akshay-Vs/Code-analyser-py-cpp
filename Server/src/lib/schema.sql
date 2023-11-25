@@ -8,6 +8,7 @@ CREATE TABLE score (
   average_time DOUBLE(16,8),
   PRIMARY KEY (id)
 );
+
 UPDATE score 
 SET average_time = ( problem_1 + problem_2 + problem_3) / 3
 WHERE average_time IS NULL;
