@@ -1,9 +1,10 @@
-## Round 0 - Sum of Two Numbers
-
-Hello candidate! Welcome to Bugbusters. This is a warm-up round to get you comfortable with Visual Studio Code and Bugbusters' evaluation tools. You'll be working with a Python file and a C file—pick either one to resolve.
+## Round 1 - Bubble Sort
 
 ### Problem Statement
-The task is to rectify a function that is supposed to provide the sum of two numbers. The numbers, 'a' and 'b', are supplied as integer arguments, and the function should return the integer value of their sum, i.e., a + b. Identify and correct any logical errors, then click the run button to proceed.
+You are given an array of integers nums. However, there are some logical errors in the implementation of the Bubble Sort algorithm. Your task is to correct the code and return the sorted array.
+
+The provided bubbleSort function is supposed to sort the array in ascending order using the Bubble Sort algorithm. Unfortunately, there are some errors in the implementation. Your goal is to fix the logical errors in the code to ensure the array is correctly sorted.
+
 
 ---
 
