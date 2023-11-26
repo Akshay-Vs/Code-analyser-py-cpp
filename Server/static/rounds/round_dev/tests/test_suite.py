@@ -113,8 +113,13 @@ class TestSuite:
             logging.info(f"Unzipping to {path}")
             z.extractall(path)
             logging.info("Successfully unzipped")
-            logging.info(f"Opening next problem in VSCode")
-            subprocess.run(["code", f"{path}/round_{next_problem}"])
+            logging.info(
+                f"Opening next problem in VSCode, path: {path}/round_{next_problem}"
+            )
+            if os.path.isdir(f"{path}/round_{next_problem}"):
+                os.system(f"code {path}/round_{next_problem}")
+            else:
+                print(f"Directory {path}/round_{next_problem} does not exist")
         else:
             logging.error(
                 f"Failed to get next problem, Status Code: {response.status_code}"
@@ -131,50 +136,50 @@ class TestSuite:
 
     def run(self):
         # try:
-            for test_case in self.test_cases:
-                case_x, case_y, expected = self.unpack(test_case)
-                output = self.test_function(case_x, case_y)
+        for test_case in self.test_cases:
+            case_x, case_y, expected = self.unpack(test_case)
+            output = self.test_function(case_x, case_y)
 
-                if output == expected:
-                    logging.info(f"Test passed: got {output}")
-                    print(
-                        self.colored(
-                            0,
-                            255,
-                            0,
-                            f"{self.pass_emoji}  Test passed: got {output}",
-                        )
+            if output == expected:
+                logging.info(f"Test passed: got {output}")
+                print(
+                    self.colored(
+                        0,
+                        255,
+                        0,
+                        f"{self.pass_emoji}  Test passed: got {output}",
                     )
+                )
 
-                else:
-                    logging.error(f"Test failed: got {output}, expected {expected}")
-                    return print(
-                        self.colored(
-                            255,
-                            0,
-                            0,
-                            f"{self.fail_emoji}  Test failed: got {output}, expected {expected}, Try again!",
-                        )
+            else:
+                logging.error(f"Test failed: got {output}, expected {expected}")
+                return print(
+                    self.colored(
+                        255,
+                        0,
+                        0,
+                        f"{self.fail_emoji}  Test failed: got {output}, expected {expected}, Try again!",
                     )
-            self.congratulate(self)
-            self.submit(self)
-            self.next_problem(self)
+                )
+        self.congratulate(self)
+        self.submit(self)
+        self.next_problem(self)
 
-        # except Exception as e:
-        #     logging.error(f"Test Suite Encountered an Error: {e}")
-        #     print(
-        #         self.colored(
-        #             255,
-        #             0,
-        #             0,
-        #             f"{self.warning_emoji} Test Suite Encountered an Error: {e}",
-        #         )
-        #     )
-        #     return print(
-        #         self.colored(
-        #             250,
-        #             250,
-        #             0,
-        #             f"\n___________________________________________________________\n\nIt's possible that the issue lies with the test suite.\n**Please reach out to the coordinators for assistance**.\nFeel free to try the test again!\n___________________________________________________________",
-        #         )
-        #     )
+    # except Exception as e:
+    #     logging.error(f"Test Suite Encountered an Error: {e}")
+    #     print(
+    #         self.colored(
+    #             255,
+    #             0,
+    #             0,
+    #             f"{self.warning_emoji} Test Suite Encountered an Error: {e}",
+    #         )
+    #     )
+    #     return print(
+    #         self.colored(
+    #             250,
+    #             250,
+    #             0,
+    #             f"\n___________________________________________________________\n\nIt's possible that the issue lies with the test suite.\n**Please reach out to the coordinators for assistance**.\nFeel free to try the test again!\n___________________________________________________________",
+    #         )
+    #     )

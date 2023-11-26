@@ -2,7 +2,7 @@ from test_suite import TestSuite
 from config_handler import Config
 
 from importlib import util
-from ctypes import c_int, cdll
+from ctypes import c_int, cdll, windll
 from platform import platform
 from argparse import ArgumentParser
 
@@ -16,6 +16,8 @@ logging.basicConfig(
     filename="app.log",
     level=logging.INFO,
 )  # logging configuration
+
+logging.info("\n\nStarting test suite")
 
 # handling command line arguments
 parser = ArgumentParser()
@@ -38,16 +40,17 @@ if problem_language == "python":
 
 elif problem_language == "c":
     logging.info("Selected Language: C")
-    subprocess.run(["gcc", "-shared", "-o", "problem.dll", problem_path])
-    logging.info("Successfully compiled problem")
-
     if platform().startswith("Windows"):
         logging.info("Platform: Windows")
-        lib = cdll.LoadLibrary(".\problem.dll")
+        subprocess.run(["gcc", "-shared", "-o", "problem.dll", problem_path])
+        logging.info("Successfully compiled problem")
+        lib = windll.LoadLibrary(".\\problem.dll")
         logging.info("Successfully loaded problem")
     else:
         logging.info("Platform: UNIX")
-        lib = cdll.LoadLibrary("./problem.dll")
+        subprocess.run(["gcc", "-o", "problem.so", problem_path])
+        logging.info("Successfully compiled problem")
+        lib = cdll.LoadLibrary("./problem.so")
         logging.info("Successfully loaded problem")
 
     lib.main.argtypes = [c_int, c_int]

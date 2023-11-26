@@ -1,0 +1,121 @@
+11/26/2023 08:07:00 PM INFO: problem_path: D:\projects\TECHAZTRA\Server\static\rounds\round_dev\problem.py, problem_language: python
+11/26/2023 08:07:00 PM INFO: Selected Language: Python
+11/26/2023 08:07:00 PM INFO: Successfully loaded problem
+11/26/2023 08:07:00 PM INFO: Successfully loaded test set
+11/26/2023 08:07:00 PM INFO: Successfully loaded config
+11/26/2023 08:07:01 PM INFO: Successfully loaded test suite
+11/26/2023 08:07:01 PM INFO: Running test suite
+11/26/2023 08:07:01 PM INFO: Unpacking: case_x: 1, case_y: 2, expected: 3
+11/26/2023 08:07:01 PM INFO: Test passed: got 3
+11/26/2023 08:07:01 PM INFO: Unpacking: case_x: 3, case_y: 4, expected: 7
+11/26/2023 08:07:01 PM INFO: Test passed: got 7
+11/26/2023 08:07:01 PM INFO: Unpacking: case_x: 5, case_y: 6, expected: 11
+11/26/2023 08:07:01 PM INFO: Test passed: got 11
+11/26/2023 08:07:01 PM INFO: Submitting to http://localhost:5000/submit
+11/26/2023 08:07:01 PM INFO: Payload: {'username': '02', 'problemId': 0, 'time': 1701009421.124283, 'status': 'pass'}
+11/26/2023 08:07:01 PM INFO: Response, POST Result: 200
+11/26/2023 08:07:01 PM INFO: Proceeding to create next problem
+11/26/2023 08:07:01 PM INFO: Unzipping to C:\Users\aksha\BugBusters\1701009421.1424286
+11/26/2023 08:07:01 PM INFO: Successfully unzipped
+11/26/2023 08:07:01 PM INFO: Opening next problem in VSCode, path: C:\Users\aksha\BugBusters\1701009421.1424286/round_1
+11/26/2023 08:13:43 PM INFO: problem_path: D:\projects\TECHAZTRA\Server\static\rounds\round_dev\problem.py, problem_language: python
+11/26/2023 08:13:43 PM INFO: Selected Language: Python
+11/26/2023 08:13:43 PM INFO: Successfully loaded problem
+11/26/2023 08:13:43 PM INFO: Successfully loaded test set
+11/26/2023 08:13:43 PM INFO: Successfully loaded config
+11/26/2023 08:13:44 PM INFO: Successfully loaded test suite
+11/26/2023 08:13:44 PM INFO: Running test suite
+11/26/2023 08:13:44 PM INFO: Unpacking: case_x: 1, case_y: 2, expected: 3
+11/26/2023 08:13:44 PM INFO: Test passed: got 3
+11/26/2023 08:13:44 PM INFO: Unpacking: case_x: 3, case_y: 4, expected: 7
+11/26/2023 08:13:44 PM INFO: Test passed: got 7
+11/26/2023 08:13:44 PM INFO: Unpacking: case_x: 5, case_y: 6, expected: 11
+11/26/2023 08:13:44 PM INFO: Test passed: got 11
+11/26/2023 08:13:44 PM INFO: Submitting to http://localhost:5000/submit
+11/26/2023 08:13:44 PM INFO: Payload: {'username': '02', 'problemId': 0, 'time': 1701009824.1572368, 'status': 'pass'}
+11/26/2023 08:13:44 PM INFO: Response, POST Result: 200
+11/26/2023 08:13:44 PM INFO: Proceeding to create next problem
+11/26/2023 08:13:44 PM INFO: Unzipping to C:\Users\aksha\BugBusters\1701009824.1976712
+11/26/2023 08:13:44 PM INFO: Successfully unzipped
+11/26/2023 08:13:44 PM INFO: Opening next problem in VSCode, path: C:\Users\aksha\BugBusters\1701009824.1976712/round_1
+11/26/2023 08:16:45 PM INFO: problem_path: D:\projects\TECHAZTRA\Server\static\rounds\round_dev\problem.py, problem_language: python
+11/26/2023 08:16:45 PM INFO: Selected Language: Python
+11/26/2023 08:16:45 PM INFO: Successfully loaded problem
+11/26/2023 08:16:45 PM INFO: Successfully loaded test set
+11/26/2023 08:16:45 PM INFO: Successfully loaded config
+11/26/2023 08:16:45 PM INFO: Successfully loaded test suite
+11/26/2023 08:16:45 PM INFO: Running test suite
+11/26/2023 08:16:45 PM INFO: Unpacking: case_x: 1, case_y: 2, expected: 3
+11/26/2023 08:16:45 PM INFO: Test passed: got 3
+11/26/2023 08:16:45 PM INFO: Unpacking: case_x: 3, case_y: 4, expected: 7
+11/26/2023 08:16:45 PM INFO: Test passed: got 7
+11/26/2023 08:16:45 PM INFO: Unpacking: case_x: 5, case_y: 6, expected: 11
+11/26/2023 08:16:45 PM INFO: Test passed: got 11
+11/26/2023 08:16:45 PM INFO: Submitting to http://localhost:5000/submit
+11/26/2023 08:16:45 PM INFO: Payload: {'username': '02', 'problemId': 0, 'time': 1701010005.3316314, 'status': 'pass'}
+11/26/2023 08:16:45 PM INFO: Response, POST Result: 200
+11/26/2023 08:16:45 PM INFO: Proceeding to create next problem
+11/26/2023 08:16:45 PM INFO: Unzipping to C:\Users\aksha\BugBusters\1701010005.3804908
+11/26/2023 08:16:45 PM INFO: Successfully unzipped
+11/26/2023 08:16:45 PM INFO: Opening next problem in VSCode, path: C:\Users\aksha\BugBusters\1701010005.3804908/round_1
+11/26/2023 08:17:29 PM INFO: problem_path: D:\projects\TECHAZTRA\Server\static\rounds\round_dev\problem.c, problem_language: c
+11/26/2023 08:17:29 PM INFO: Selected Language: C
+11/26/2023 08:21:52 PM INFO: 
+
+Starting test suite
+11/26/2023 08:21:52 PM INFO: problem_path: D:\projects\TECHAZTRA\Server\static\rounds\round_dev\problem.c, problem_language: c
+11/26/2023 08:21:52 PM INFO: Selected Language: C
+11/26/2023 08:31:11 PM INFO: 
+
+Starting test suite
+11/26/2023 08:31:11 PM INFO: problem_path: D:\projects\TECHAZTRA\Server\static\rounds\round_dev\problem.c, problem_language: c
+11/26/2023 08:31:11 PM INFO: Selected Language: C
+11/26/2023 08:34:47 PM INFO: 
+
+Starting test suite
+11/26/2023 08:34:47 PM INFO: problem_path: D:\projects\TECHAZTRA\Server\static\rounds\round_dev\problem.c, problem_language: c
+11/26/2023 08:34:47 PM INFO: Selected Language: C
+11/26/2023 08:34:49 PM INFO: Successfully compiled problem
+11/26/2023 08:34:49 PM INFO: Platform: Windows
+11/26/2023 08:39:11 PM INFO: 
+
+Starting test suite
+11/26/2023 08:39:11 PM INFO: problem_path: D:\projects\TECHAZTRA\Server\static\rounds\round_dev\problem.c, problem_language: c
+11/26/2023 08:39:11 PM INFO: Selected Language: C
+11/26/2023 08:39:11 PM INFO: Platform: Windows
+11/26/2023 08:39:12 PM INFO: Successfully compiled problem
+11/26/2023 08:39:30 PM INFO: 
+
+Starting test suite
+11/26/2023 08:39:30 PM INFO: problem_path: D:\projects\TECHAZTRA\Server\static\rounds\round_dev\problem.c, problem_language: c
+11/26/2023 08:39:30 PM INFO: Selected Language: C
+11/26/2023 08:39:30 PM INFO: Platform: Windows
+11/26/2023 08:39:31 PM INFO: Successfully compiled problem
+11/26/2023 08:43:04 PM INFO: 
+
+Starting test suite
+11/26/2023 08:43:04 PM INFO: problem_path: D:\projects\TECHAZTRA\Server\static\rounds\round_dev\problem.c, problem_language: c
+11/26/2023 08:43:04 PM INFO: Selected Language: C
+11/26/2023 08:43:04 PM INFO: Platform: Windows
+11/26/2023 08:43:04 PM INFO: Successfully compiled problem
+11/26/2023 08:44:34 PM INFO: 
+
+Starting test suite
+11/26/2023 08:44:34 PM INFO: problem_path: D:\projects\TECHAZTRA\Server\static\rounds\round_dev\problem.c, problem_language: c
+11/26/2023 08:44:34 PM INFO: Selected Language: C
+11/26/2023 08:44:34 PM INFO: Platform: Windows
+11/26/2023 08:44:34 PM INFO: Successfully compiled problem
+11/26/2023 08:45:36 PM INFO: 
+
+Starting test suite
+11/26/2023 08:45:36 PM INFO: problem_path: D:\projects\TECHAZTRA\Server\static\rounds\round_dev\problem.c, problem_language: c
+11/26/2023 08:45:36 PM INFO: Selected Language: C
+11/26/2023 08:45:36 PM INFO: Platform: Windows
+11/26/2023 08:45:37 PM INFO: Successfully compiled problem
+11/26/2023 08:49:53 PM INFO: 
+
+Starting test suite
+11/26/2023 08:49:53 PM INFO: problem_path: D:\projects\TECHAZTRA\Server\static\rounds\round_dev\problem.c, problem_language: c
+11/26/2023 08:49:53 PM INFO: Selected Language: C
+11/26/2023 08:49:53 PM INFO: Platform: Windows
+11/26/2023 08:49:54 PM INFO: Successfully compiled problem
