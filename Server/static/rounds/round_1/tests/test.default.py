@@ -38,53 +38,26 @@ if problem_language == "python":
     problem = module.problem
     logging.info("Successfully loaded problem")
 
-# Load the problem based on the specified language
-if problem_language == "python":
-    # Load Python problem
-    logging.info("Selected Language: Python")
-    spec = util.spec_from_file_location("problem", problem_path)
-    module = util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    problem = module.problem
-    logging.info("Successfully loaded problem")
-
 elif problem_language == "c":
-    # Load C problem
     logging.info("Selected Language: C")
-
-    # Check the platform
     if platform().startswith("Windows"):
-        # On Windows, compile and load DLL
         logging.info("Platform: Windows")
         subprocess.run(["gcc", "-shared", "-o", "problem.dll", problem_path])
         logging.info("Successfully compiled problem")
-
-        # Load the compiled DLL using ctypes on Windows
         lib = windll.LoadLibrary(".\\problem.dll")
         logging.info("Successfully loaded problem")
 
     else:
-        # On UNIX, compile and load SO
-        logging.info("Platform: UNIX")  # Oh boy, this's gonna be fun |´‿`|
+        logging.info("Platform: UNIX")
         subprocess.run(["gcc", "-o", "problem.so", problem_path])
         logging.info("Successfully compiled problem")
-
-        # Load the compiled SO using ctypes on UNIX
         lib = cdll.LoadLibrary("./problem.so")
         logging.info("Successfully loaded problem")
 
     lib.main.argtypes = (POINTER(c_int), c_int)
-    lib.main.restype = POINTER(c_int)  # The function returns a pointer to int
+    lib.main.restype = c_int  # The function returns a pointer to int
 
-    # Convert the returned c pointer to a Python list
-    # The lambda function takes two arguments (a, b):
-    #   a - the input array passed to the C function
-    #   b - the length of the input array
-    # The lambda function returns a Python list by iterating over the elements of the C array.
-
-    problem = lambda a, b: [
-        lib.main((c_int * len(a))(*a), b)[i] for i in range(b) # I cried, but it works (ツ)
-    ] 
+    problem = lambda a, b: lib.main((c_int * len(a))(*a), b)
 
 
 else:
@@ -96,19 +69,7 @@ else:
 test_set = [
     # args: unsorted array, n
     # expected: sorted array
-    {"args": [[1, 3, 6, 4, 9], 5], "expected": [1, 3, 4, 6, 9]},
-    {
-        "args": [[23, 45, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0], 15],
-        "expected": [0, 1, 2, 3, 4, 5, 6, 7, 7, 8, 8, 9, 9, 23, 45],
-    },
-    {
-        "args": [[4, 65, 3, 2, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 19],
-        "expected": [0, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 65],
-    },
-    {
-        "args": [[5, 8, 2, 9, 3, 6, 7, 14, 16, 8], 10],
-        "expected": [2, 3, 5, 6, 7, 8, 8, 9, 14, 16],
-    },
+    {"args": [[1, 3, 6, 4, 9], 5], "expected": 9}
 ]
 
 logging.info("Successfully loaded test set")

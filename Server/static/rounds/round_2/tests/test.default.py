@@ -2,7 +2,7 @@ from test_suite import TestSuite
 from config_handler import Config
 
 from importlib import util
-from ctypes import *
+from ctypes import c_int, cdll, windll
 from platform import platform
 from argparse import ArgumentParser
 
@@ -46,7 +46,7 @@ elif problem_language == "c":
         logging.info("Successfully compiled problem")
         lib = windll.LoadLibrary(".\\problem.dll")
         logging.info("Successfully loaded problem")
-
+        
     else:
         logging.info("Platform: UNIX")
         subprocess.run(["gcc", "-o", "problem.so", problem_path])
@@ -54,11 +54,10 @@ elif problem_language == "c":
         lib = cdll.LoadLibrary("./problem.so")
         logging.info("Successfully loaded problem")
 
-    lib.main.argtypes = (POINTER(c_int), c_int)
-    lib.main.restype = POINTER(c_int)  # The function returns a pointer to int
+    lib.main.argtypes = [c_int, c_int]
+    lib.main.restype = c_int
 
-    problem = lambda a, b: [lib.main((c_int * len(a))(*a), b)[i] for i in range(b)] # Convert the returned pointer to a Python list
-
+    problem = lambda a, b: lib.main(a, b)
 
 else:
     logging.error("Language not supported")
@@ -67,21 +66,13 @@ else:
 
 # region Test Instantiation
 test_set = [
-    # args: unsorted array, n
-    # expected: sorted array
-    {"args": [[1, 3, 6, 4, 9], 5], "expected": [1, 3, 4, 6, 9]},
-    {
-        "args": [[23, 45, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0], 15],
-        "expected": [0, 1, 2, 3, 4, 5, 6, 7, 7, 8, 8, 9, 9, 23, 45],
-    },
-    {
-        "args": [[4, 65, 3, 2, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 19],
-        "expected": [0, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 65],
-    },
-    {
-        "args": [[5, 8, 2, 9, 3, 6, 7, 14, 16, 8], 10],
-        "expected": [2, 3, 5, 6, 7, 8, 8, 9, 14, 16],
-    },
+    {"args": [0, 0], "expected": 1},
+    {"args": [1, 0], "expected": 2},
+    {"args": [0, 1], "expected": 2},
+    {"args": [1, 1], "expected": 3},
+    {"args": [2, 2], "expected": 7},
+    {"args": [3, 3], "expected": 61},
+    {"args": [3, 4], "expected": 125}
 ]
 
 logging.info("Successfully loaded test set")

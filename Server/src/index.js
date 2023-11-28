@@ -15,7 +15,10 @@ app.use("/submit", resultRouter);
 
 app.get("/", (req, res) => {
   console.log("Connnection established");
-  res.send("Connected to the server");
+  res.send(`Connected to the server,
+  "python": "cd $dir && python -u tests\\test.default.py $fileName python",
+  "c":"cd $dir && python -u tests\\test.default.py $fileName c",
+`);
 });
 
 app.get("/setup", (req, res) => {

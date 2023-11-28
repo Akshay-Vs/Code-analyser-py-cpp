@@ -116,8 +116,11 @@ class TestSuite:
             logging.info(
                 f"Opening next problem in VSCode, path: {path}/round_{next_problem}"
             )
-            if os.path.isdir(f"{path}/round_{next_problem}"):
-                os.system(f"code {path}/round_{next_problem}")
+
+            dir_path = os.path.join(path, f"round_{next_problem}")
+            print(f"'{dir_path}'")
+            if os.path.isdir(dir_path):
+                os.system(f'code "{dir_path}"')
             else:
                 print(f"Directory {path}/round_{next_problem} does not exist")
         else:

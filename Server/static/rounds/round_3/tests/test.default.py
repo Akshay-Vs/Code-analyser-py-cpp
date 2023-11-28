@@ -38,26 +38,53 @@ if problem_language == "python":
     problem = module.problem
     logging.info("Successfully loaded problem")
 
+# Load the problem based on the specified language
+if problem_language == "python":
+    # Load Python problem
+    logging.info("Selected Language: Python")
+    spec = util.spec_from_file_location("problem", problem_path)
+    module = util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    problem = module.problem
+    logging.info("Successfully loaded problem")
+
 elif problem_language == "c":
+    # Load C problem
     logging.info("Selected Language: C")
+
+    # Check the platform
     if platform().startswith("Windows"):
+        # On Windows, compile and load DLL
         logging.info("Platform: Windows")
         subprocess.run(["gcc", "-shared", "-o", "problem.dll", problem_path])
         logging.info("Successfully compiled problem")
+
+        # Load the compiled DLL using ctypes on Windows
         lib = windll.LoadLibrary(".\\problem.dll")
         logging.info("Successfully loaded problem")
 
     else:
-        logging.info("Platform: UNIX")
+        # On UNIX, compile and load SO
+        logging.info("Platform: UNIX")  # Oh boy, this's gonna be fun |´‿`|
         subprocess.run(["gcc", "-o", "problem.so", problem_path])
         logging.info("Successfully compiled problem")
+
+        # Load the compiled SO using ctypes on UNIX
         lib = cdll.LoadLibrary("./problem.so")
         logging.info("Successfully loaded problem")
 
     lib.main.argtypes = (POINTER(c_int), c_int)
     lib.main.restype = POINTER(c_int)  # The function returns a pointer to int
 
-    problem = lambda a, b: [lib.main((c_int * len(a))(*a), b)[i] for i in range(b)] # Convert the returned pointer to a Python list
+    # Convert the returned c pointer to a Python list
+    # The lambda function takes two arguments (a, b):
+    #   a - the input array passed to the C function
+    #   b - the length of the input array
+    # The lambda function returns a Python list by iterating over the elements of the C array.
+
+    problem = lambda a, b: [
+        lib.main((c_int * len(a))(*a), b)[i] for i in range(b) # I cried, but it works (ツ)
+    ] 
 
 
 else:

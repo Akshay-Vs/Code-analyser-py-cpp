@@ -1,13 +1,10 @@
-def fizz_buzz(n):
-    for i in range(1, n + 1):
-        if i / 3 == 0 and i / 5 == 0:
-            print("Buzz")
-        elif i / 3 == 0:
-            print("FizzBizz")
-        elif i / 5 == 0:
-            print("Buzz")
-        else:
-            print(i)
+def ackermann(m, n): # <-- Edit this function
+    if m == 0:
+        return n + 1
+    elif m > 0 and n == 0:
+        return ackermann(m - 1, 1)
+    elif m > 0 and n > 0:
+        return ackermann(m - 1, ackermann(m, n - 1))
 
-# Call the function with the desired range, for example:
-fizz_buzz(5)
+def problem(m, n):
+    return ackermann(m, n)

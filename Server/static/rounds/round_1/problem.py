@@ -1,6 +1,10 @@
-def problem(arr, n):
-    for i in range(n):
-        for j in range(0, n - i - 1):
-             if arr[j] < arr[j + 1]:
-                arr[i], arr[i + 1] = arr[j + 1], arr[j]
-    return arr
+def problem(arr, args):
+    if not arr:
+        return None
+    max_element = arr[0]
+    for element in arr:
+        if element > max_element:
+            max_element = element
+    return max_element
+
+print(problem([1,2,5,4,6,7], 0))
